@@ -1,0 +1,5 @@
+# Generated installers under packages/ must be tracked; only ignore scratch files.
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
