@@ -22,7 +22,7 @@ param(
     [Parameter(Position = 1)]
     [string]$Version,
 
-    [string]$Repo = 'qingbenben/scoop-bucket',
+    [string]$Repo = 'benbenqing/scoop-bucket',
 
     [string]$Branch = 'main',
 

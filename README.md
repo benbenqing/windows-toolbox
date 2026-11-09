@@ -11,8 +11,8 @@
 ## 在另一台电脑上安装
 
 ```powershell
-scoop bucket add qingbenben https://github.com/qingbenben/scoop-bucket
-scoop install qingbenben/terminal-proxy
+scoop bucket add benbenqing https://github.com/benbenqing/scoop-bucket
+scoop install benbenqing/terminal-proxy
 ```
 
 `tproxy` 会以 shim 形式装进 `~\scoop\shims`，新开的终端直接可用：
@@ -59,11 +59,11 @@ scripts/publish.ps1            # 打包 + 回写版本/URL/哈希
 
 脚本做三件事：把 `apps/<app>` 打成 `packages/<app>-<ver>.zip`、计算 SHA256、
 把 `bucket/<app>.json` 的 `url`/`hash`/`version` 改好。清单里的 URL 指向
-`raw.githubusercontent.com/qingbenben/scoop-bucket/main/packages/...`，所以
+`raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/...`，所以
 **包文件和清单必须一起提交**。
 
 ## 新增一个工具
 
 1. 源码放进 `apps/<app>/`，清单放进 `bucket/<app>.json`（`bin` 里写 ps1 → 命令名）。
 2. `pwsh .\scripts\publish.ps1 -App <app> -Version 1.0.0 -Commit`
-3. `git push`，另一台机器 `scoop update` 后即可 `scoop install qingbenben/<app>`。
+3. `git push`，另一台机器 `scoop update` 后即可 `scoop install benbenqing/<app>`。
