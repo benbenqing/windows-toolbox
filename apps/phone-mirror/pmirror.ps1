@@ -43,8 +43,13 @@ $adbFallbacks = @(
 $scrcpyExe = Find-Tool "scrcpy.exe" $scrcpyFallbacks
 $adbExe = Find-Tool "adb.exe" $adbFallbacks
 
-if (-not $scrcpyExe) {
-    Write-Error "未找到 scrcpy.exe，请确保已安装 scrcpy 并加入环境变量。"
+# help / devices 不需要 scrcpy，只有真正投屏时才强制检查
+function Assert-Scrcpy {
+    if ($scrcpyExe) { return }
+
+    Write-Host "未找到 scrcpy.exe。" -ForegroundColor Red
+    Write-Host "安装方式: scoop install extras/scrcpy （自带 adb）" -ForegroundColor Yellow
+    Write-Host "或从 https://github.com/Genymobile/scrcpy/releases 下载后加入 PATH。" -ForegroundColor Yellow
     exit 1
 }
 
@@ -96,6 +101,11 @@ switch ($Action.ToLower()) {
 
     { $_ -in @('devices', 'list') } {
         Write-Host "正在检测 ADB 设备..." -ForegroundColor Cyan
+        if (-not $adbExe) {
+            Write-Host "未找到 adb.exe，请先安装 scrcpy 或 Android platform-tools。" -ForegroundColor Red
+            Write-Host "  scoop install extras/scrcpy   # 自带 adb" -ForegroundColor Yellow
+            exit 1
+        }
         $devs = Get-AdbDevices
         if ($devs.Count -eq 0) {
             Write-Host "未检测到任何设备，请确保已连接 USB 且手机开启了「USB 调试」。" -ForegroundColor Yellow
@@ -106,6 +116,7 @@ switch ($Action.ToLower()) {
     }
 
     { $_ -in @('wifi', 'wireless', 'tcpip') } {
+        Assert-Scrcpy
         Write-Host "正在配置无线投屏..." -ForegroundColor Cyan
         $devs = Get-AdbDevices | Where-Object { $_.Status -eq 'device' }
         if ($devs.Count -eq 0) {
@@ -145,6 +156,7 @@ switch ($Action.ToLower()) {
 
     default {
         # 启动投屏
+        Assert-Scrcpy
         $devs = Get-AdbDevices
         if ($devs.Count -eq 0) {
             Write-Host "未检测到连接的 Android 设备！" -ForegroundColor Red

@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Android screen mirroring and control helper built on scrcpy and adb.",
   "homepage": "https://github.com/benbenqing/scoop-bucket",
   "license": "MIT",
-  "url": "https://raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/phone-mirror-1.0.0.zip",
-  "hash": "sha256:555fdb8a3c9b5f79ea64f3257a33bb5dc63ba19ecc96675dbf219290d20815b6",
+  "url": "https://raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/phone-mirror-1.0.1.zip",
+  "hash": "sha256:143991ed141349d0a29896ab4939ce7b21255f0e23756d9983652084d76ed150",
   "bin": [
     [
       "pmirror.ps1",
