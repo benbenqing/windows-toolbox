@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "version": "1.0.0",
+  "description": "Unified launcher for personal terminal tools: tproxy, pmirror and codex-fix.",
+  "homepage": "https://github.com/benbenqing/scoop-bucket",
+  "license": "MIT",
+  "url": "https://raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/ttool-1.0.0.zip",
+  "hash": "sha256:01187313034ae15b37f5c24e021f0b6f608fb421b3aedb1890164f15f764d80c",
+  "depends": [
+    "terminal-proxy",
+    "phone-mirror",
+    "codex-fix"
+  ],
+  "bin": [
+    [
+      "ttool.ps1",
+      "ttool"
+    ],
+    [
+      "ttool.ps1",
+      "t"
+    ]
+  ],
+  "notes": [
+    "t / ttool        交互式菜单",
+    "t proxy on|off   tproxy 直通",
+    "t mirror wifi    pmirror 直通",
+    "t codex fix      codex-fix 直通",
+    "安装 ttool 会自动带上 terminal-proxy、phone-mirror、codex-fix"
+  ]
+}
