@@ -2,9 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
   "version": "1.0.2",
   "description": "Android screen mirroring and control helper built on scrcpy and adb.",
-  "homepage": "https://github.com/benbenqing/scoop-bucket",
+  "homepage": "https://github.com/benbenqing/windows-toolbox",
   "license": "MIT",
-  "url": "https://raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/phone-mirror-1.0.2.zip",
+  "url": "https://raw.githubusercontent.com/benbenqing/windows-toolbox/main/packages/phone-mirror-1.0.2.zip",
   "hash": "sha256:a85a907eb3344963e40ca40da9bbde84578be7fd075bcb7a68ecc73aaae5a756",
   "bin": [
     [

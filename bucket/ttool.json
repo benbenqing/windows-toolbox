@@ -2,9 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
   "version": "1.0.1",
   "description": "Unified launcher for personal terminal tools: tproxy, pmirror and codex-fix.",
-  "homepage": "https://github.com/benbenqing/scoop-bucket",
+  "homepage": "https://github.com/benbenqing/windows-toolbox",
   "license": "MIT",
-  "url": "https://raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/ttool-1.0.1.zip",
+  "url": "https://raw.githubusercontent.com/benbenqing/windows-toolbox/main/packages/ttool-1.0.1.zip",
   "hash": "sha256:2198dc75315e82edda664285b90f5461eda22aa1f2b24b52689b64734cb440b1",
   "depends": [
     "terminal-proxy",

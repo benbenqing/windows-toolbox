@@ -1,6 +1,10 @@
-# scoop-bucket
+# Windows Toolbox
 
-个人 Scoop bucket，用来在多台 Windows 机器之间分发自己写的终端小工具。
+个人 Windows 终端工具集，通过 Scoop 在多台 Windows 机器之间安装和更新。
+
+源码放在 `apps/`，Scoop 清单放在标准的 `bucket/` 目录，已发布的安装包放在 `packages/`。
+本地开发副本可以放在 `D:\softCode\windows-toolbox`；Scoop 会单独维护软件源副本。
+WinGet、Scoop、Chocolatey 的分工和使用方法见 [Windows 包管理工具](docs/windows-package-managers.md)。
 
 目前收录：
 
@@ -16,16 +20,16 @@
 一条命令装齐整套：
 
 ```powershell
-scoop bucket add benbenqing https://github.com/benbenqing/scoop-bucket
-scoop install benbenqing/ttool     # 自动依赖 terminal-proxy / phone-mirror / codex-fix
+scoop bucket add windows-toolbox https://github.com/benbenqing/windows-toolbox
+scoop install windows-toolbox/ttool     # 自动依赖 terminal-proxy / phone-mirror / codex-fix
 ```
 
 也可以只装某个工具：
 
 ```powershell
-scoop install benbenqing/terminal-proxy
-scoop install benbenqing/phone-mirror
-scoop install benbenqing/codex-fix
+scoop install windows-toolbox/terminal-proxy
+scoop install windows-toolbox/phone-mirror
+scoop install windows-toolbox/codex-fix
 ```
 
 装完后以 shim 形式进 `~\scoop\shims`，新开的终端直接可用：
@@ -83,6 +87,7 @@ bucket/<app>.json     # Scoop 清单：下载地址 + SHA256 + bin 映射
 apps/<app>/           # 工具源码（唯一真源）
 packages/             # 由脚本生成的安装包，必须提交
 scripts/publish.ps1   # 打包 + 回写版本/URL/哈希
+docs/                 # Windows 环境与包管理说明
 ```
 
 ## 发布新版本
@@ -99,11 +104,11 @@ scripts/publish.ps1   # 打包 + 回写版本/URL/哈希
 
 脚本做三件事：把 `apps/<app>` 打成 `packages/<app>-<ver>.zip`、计算 SHA256、
 把 `bucket/<app>.json` 的 `url`/`hash`/`version` 改好。清单里的 URL 指向
-`raw.githubusercontent.com/benbenqing/scoop-bucket/main/packages/...`，所以
+`raw.githubusercontent.com/benbenqing/windows-toolbox/main/packages/...`，所以
 **包文件和清单必须一起提交**。
 
 ## 新增一个工具
 
 1. 源码放进 `apps/<app>/`，清单放进 `bucket/<app>.json`（`bin` 里写 ps1 → 命令名）。
 2. `pwsh .\scripts\publish.ps1 -App <app> -Version 1.0.0 -Commit`
-3. `git push`，另一台机器 `scoop update` 后即可 `scoop install benbenqing/<app>`。
+3. `git push`，另一台机器 `scoop update` 后即可 `scoop install windows-toolbox/<app>`。
