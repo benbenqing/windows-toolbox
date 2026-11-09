@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     ttool - 开发者个人通用工具箱入口 (Unified Developer Toolkit)
 .DESCRIPTION

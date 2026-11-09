@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     pmirror - Android 手机极速投屏与控制工具 (基于 scrcpy)
 .DESCRIPTION

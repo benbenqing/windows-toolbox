@@ -70,6 +70,17 @@ if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force
 }
 
+# Windows PowerShell 5.1 reads BOM-less scripts as ANSI, which corrupts the
+# Chinese text and can break parsing on a machine without pwsh. Normalize every
+# shipped .ps1 to UTF-8 with BOM before zipping.
+$utf8Bom = New-Object System.Text.UTF8Encoding($true)
+foreach ($file in $payload) {
+    if ($file.Extension -ne '.ps1') { continue }
+
+    $text = [System.IO.File]::ReadAllText($file.FullName)
+    [System.IO.File]::WriteAllText($file.FullName, $text, $utf8Bom)
+}
+
 Compress-Archive -Path $payload.FullName -DestinationPath $zipPath -CompressionLevel Optimal
 $hash = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
